@@ -16,4 +16,5 @@ generator client {
 model URLRecord {
   id  Int    @id @default(autoincrement())
   url String
+  // createdAt DateTime @default(now())
 }
