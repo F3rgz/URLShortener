@@ -2,12 +2,9 @@ FROM node:20 As development
 
 WORKDIR /app
 
-COPY package*.json ./
-COPY prisma ./prisma/
+COPY . .
 
 RUN npm install
-
-COPY . .
 
 EXPOSE 3000
 
@@ -15,10 +12,6 @@ FROM node:20 AS builder
 
 # Create the apps directory.
 WORKDIR /app
-
-# Copy the package.json and prisma files over.
-COPY package*.json ./
-COPY prisma ./prisma/
 
 COPY --from=development /app/node_modules ./node_modules
 

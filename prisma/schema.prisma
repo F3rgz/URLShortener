@@ -13,8 +13,8 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model URLRecord {
-  id  Int    @id @default(autoincrement())
-  url String
-  // createdAt DateTime @default(now())
+model urlRecord {
+  id        Int      @id @default(autoincrement())
+  url       String
+  createdAt DateTime @default(now())
 }
