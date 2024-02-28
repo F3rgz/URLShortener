@@ -7,9 +7,11 @@ import { shortenURL } from '../utils/hashing/hashing.utils';
 export class UrlmapperService {
   constructor(private prisma: PrismaService) {}
 
-  async getRecord(input: { id: number }): Promise<urlRecord> {
-    const { id } = input;
-    return this.prisma.urlRecord.findUnique({ where: { id } });
+  async getRecord(key): Promise<Partial<urlRecord>> {
+    return this.prisma.urlRecord.findUnique({
+      where: { key },
+      select: { key: true, url: true },
+    });
   }
 
   async createRecord(url: string): Promise<Partial<urlRecord>> {
